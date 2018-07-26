@@ -25,8 +25,11 @@ generalProfile:{
 },
 
 peopleLikeme:{
-    name:["My bro","My mom","My dear Husband"," Aryan"]
-
+    familyName:["My bro","My mom","My dear Husband"," Aryan"],
+    familyImage:["../images/1920506_10200784067044551_1882704467_n.jpg",
+               "../images/13083258_10204791698550760_4723141851621277596_n.jpg",
+               "../images/71750_134459453271030_7435530_n.jpg",
+               "../images/11148689_1016053245111642_2670894390235829991_n.jpg"]
 },
 
  Commnunication:{
@@ -51,6 +54,7 @@ const loadDatabase = function (localStorageKey) {
     return JSON.parse(databaseString)
 }
 console.log(loadDatabase("MyPersonality"));
+const data =loadDatabase("MyPersonality")
 
 
 // const paragraph=document.getElementById("wrapper")
@@ -77,9 +81,11 @@ console.log(loadDatabase("MyPersonality"));
 //                   <ul>
 //                   </ul>`
 //console.log(MyPersonality.generalProfile.agreeStatement2)
+
+const placeContent=document.getElementById("container")
 const content=document.getElementById("general")
 content.innerHTML=`<div class="Agree">
-                 <ul> <strong>Agree Statement </strong>
+                 <ul> <strong>Agree Statements </strong>
                 <li>${MyPersonality.generalProfile.agreeStatment1}</li>
                 <li>${MyPersonality.generalProfile.agreeStatement2}</li>
                 <li>${MyPersonality.generalProfile.agreeStatement3}</li>
@@ -96,14 +102,43 @@ content.innerHTML=`<div class="Agree">
 
 
 const People = document.getElementById("people")
-People.innerHTML=  `<h3> Similar people:<h3>
-                  <div id="people">
-                  <p> ${MyPersonality.peopleLikeme.name[0]},${MyPersonality.peopleLikeme.name[1]}, 
-                  ${MyPersonality.peopleLikeme.name[2]}, ${MyPersonality.peopleLikeme.name[3]}</p>
+let similarPeople=`<h3> Similar people:<h3>`
+for(let i=0 ; i<MyPersonality.peopleLikeme.familyName.length; i++)
+{
+similarPeople+=`  
+                  <div id="people1">
+                  <p> ${MyPersonality.peopleLikeme.familyName[i]}
+                  
+                  </p>
                   </div>`
-       
-const Commnunication=document.getElementById("communication")
-Commnunication.innerHTML=`<h2>My communication </h2>
+}
+for(let j=0; j<MyPersonality.peopleLikeme.familyImage.length; j++)
+{
+    similarPeople+=`<div id="image">
+                <img src="${MyPersonality.peopleLikeme.familyImage[j]}" alt="family pic" width="300" height="300">
+                </div>`
+}
+People.innerHTML=similarPeople
+
+// function similarPeople(info)
+// {
+//     placeContent.innerHTML= `<h2>Similar People </h2>
+//     <div class="people">
+//     </div>
+// </div>`
+// let div = document.querySelector("people");
+// for (let i = 0; i < info.length; i++) {
+//     div.innerHTML +=`<div class="family">
+//     <img src="${info[i].familyImage}" alt="family Pic">    
+//     <p>${info[i].familyName}</p>
+// </div>`
+// }
+// }
+// similarPeople(MyPersonality.peopleLikeme.familyImage.familyName)
+
+
+const commnunicationContent=document.getElementById("communication")
+commnunicationContent.innerHTML=`<h2>My communication </h2>
                         <div id= "talk">
                         <ul>
                         <li>${MyPersonality.Commnunication.type[0]}</li>
@@ -111,4 +146,11 @@ Commnunication.innerHTML=`<h2>My communication </h2>
                         <li>${MyPersonality.Commnunication.type[2]}</li>
                           </ul> </div>`
 
+// const commnunicationContent=document.getElementById("people")
+// commnunicationContent.innerHTML=`<ul id ="communi">My commnunication</h2>`
+// let li= document.getElementById("communi")
+//       for (let i=0;i<commnunicationContent.Commnunication.length;i++)
+//       {
+//            li.innerHTML=`<li> `
+//       }
 

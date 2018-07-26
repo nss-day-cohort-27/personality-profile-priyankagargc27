@@ -1,0 +1,32 @@
+.container
+{
+    background: linear-gradient(gray,goldenrod,goldenrod,gray)
+}
+.heading
+{
+    color:darkblue;
+    text-align: center;
+    text-shadow:2px 2px lightgreen;
+}
+.Agree{
+    font-size: 25px;
+
+}
+
+.disAgree
+{
+    font-size: 25px;
+}
+
+.people p{
+ font-style: normal;
+ font-size:25px;
+ color:royalblue;    
+}
+
+.image img
+{
+    width:50%;
+    height:50%;
+    border-radius: 50%;
+}
